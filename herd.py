@@ -4,6 +4,7 @@ from dinosaur import Dinosaur
 class Herd:
     def __init__(self):
         self.herd = [Dinosaur('Brayden'), Dinosaur('Kayden'), Dinosaur('Hayden')]
+        self.current_dinosaur = self.get_dinosaur()
 
     def get_dinosaur(self):
         dinosaur_index = randint(0,len(self.herd)-1)

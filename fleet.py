@@ -4,6 +4,7 @@ from robot import Robot
 class Fleet:
     def __init__(self):
         self.fleet = [Robot('Jerry'), Robot('Terry'), Robot('Berry')]
+        self.current_robot = self.get_robot()
 
     def get_robot(self):
         robot_index = randint(0,len(self.fleet)-1)

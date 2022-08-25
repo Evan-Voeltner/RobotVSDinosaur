@@ -1,6 +1,3 @@
-import imp
-from dinosaur import Dinosaur
-from robot import Robot
 from fleet import Fleet
 from herd import Herd
 
@@ -8,8 +5,6 @@ class Battlefield:
     def __init__(self):
         self.robot_fleet = Fleet()
         self.dinosaur_herd = Herd()
-        self.robot = self.robot_fleet.get_robot()
-        self.dinosaur = self.dinosaur_herd.get_dinosaur()
         self.winner = ''
 
     def run_game(self):
@@ -25,18 +20,18 @@ class Battlefield:
 
     def battle_phase(self):
         while True:
-            self.robot = self.robot_fleet.get_robot()
-            self.robot.attack(self.dinosaur)
-            if self.dinosaur.health <= 0:
-                self.dinosaur_herd.kill_dinosaur(self.dinosaur)
+            self.robot_fleet.current_robot = self.robot_fleet.get_robot()
+            self.robot_fleet.current_robot.attack(self.dinosaur_herd.current_dinosaur)
+            if self.dinosaur_herd.current_dinosaur.health <= 0:
+                self.dinosaur_herd.kill_dinosaur(self.dinosaur_herd.current_dinosaur)
                 if len(self.dinosaur_herd.herd) == 0:
                     self.winner = 'Robots'
                     break
             
-            self.dinosaur = self.dinosaur_herd.get_dinosaur()
-            self.dinosaur.attack(self.robot)
-            if self.robot.health <= 0:
-                self.robot_fleet.kill_robot(self.robot)
+            self.dinosaur_herd.current_dinosaur = self.dinosaur_herd.get_dinosaur()
+            self.dinosaur_herd.current_dinosaur.attack(self.robot_fleet.current_robot)
+            if self.robot_fleet.current_robot.health <= 0:
+                self.robot_fleet.kill_robot(self.robot_fleet.current_robot)
                 if len(self.robot_fleet.fleet) == 0:
                     self.winner = 'Dinosaurs'
                     break
