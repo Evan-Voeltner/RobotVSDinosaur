@@ -8,10 +8,15 @@ class Battlefield:
         self.winner = ''
 
     def run_game(self):
-        pass
+        self.display_welcome()
+        self.battle_phase
+        self.display_winner
     
     def display_welcome(self):
-        pass
+        print('Welcome to the battle!')
+        print('Robot and Dinosaur are going to face off in a battle to the LITERAL DEATH!')
+        print('May the best battler win! (is battler a word? idk)')
+        print('Good luck!')
 
     def battle_phase(self):
         while True:
