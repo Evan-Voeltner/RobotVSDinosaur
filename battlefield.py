@@ -6,10 +6,10 @@ from herd import Herd
 
 class Battlefield:
     def __init__(self):
-        self.robot = Robot()
-        self.dinosaur = Dinosaur()
         self.robot_fleet = Fleet()
         self.dinosaur_herd = Herd()
+        self.robot = self.robot_fleet.get_robot()
+        self.dinosaur = self.dinosaur_herd.get_dinosaur()
         self.winner = ''
 
     def run_game(self):
@@ -19,7 +19,7 @@ class Battlefield:
     
     def display_welcome(self):
         print('Welcome to the battle!')
-        print('Robot and Dinosaur are going to face off in a battle to the LITERAL DEATH!')
+        print('Robots and Dinosaurs are going to face off in a battle to the LITERAL DEATH!')
         print('May the best battler win! (is battler a word? idk)')
         print('Good luck!')
 
@@ -28,7 +28,7 @@ class Battlefield:
             self.robot = self.robot_fleet.get_robot()
             self.robot.attack(self.dinosaur)
             if self.dinosaur.health <= 0:
-                self.dinosaur_herd.kill_dinosaur()
+                self.dinosaur_herd.kill_dinosaur(self.dinosaur)
                 if len(self.dinosaur_herd.herd) == 0:
                     self.winner = 'Robots'
                     break
@@ -36,8 +36,8 @@ class Battlefield:
             self.dinosaur = self.dinosaur_herd.get_dinosaur()
             self.dinosaur.attack(self.robot)
             if self.robot.health <= 0:
-                self.robot_fleet.kill_robot()
-                if len(self.dinosaur_herd.herd) == 0:
+                self.robot_fleet.kill_robot(self.robot)
+                if len(self.robot_fleet.fleet) == 0:
                     self.winner = 'Dinosaurs'
                     break
         

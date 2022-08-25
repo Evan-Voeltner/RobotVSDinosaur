@@ -10,8 +10,8 @@ class Robot:
     def attack(self, dinosaur):
         self.select_weapon()
         dinosaur.health -= self.active_weapon.attack_power
-        print(f'Robot attacked Dinosaur with {self.active_weapon.name}, and it delt {str(self.active_weapon.attack_power)} damage!')
-        print(f'Dinosaur has {str(dinosaur.health)} health left!')
+        print(f'{self.name} attacked {dinosaur.name} with {self.active_weapon.name}, and it delt {str(self.active_weapon.attack_power)} damage!')
+        print(f'{dinosaur.name} has {str(dinosaur.health)} health left!')
 
     def select_weapon(self):
         for weapon in self.weapons:

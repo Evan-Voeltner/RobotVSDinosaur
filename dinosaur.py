@@ -6,5 +6,5 @@ class Dinosaur:
 
     def attack(self, robot):
         robot.health -= self.attack_power
-        print(f'Dinosaur attacked Robot, and it delt {str(self.attack_power)} damage!')
-        print(f'Robot has {str(robot.health)} health left!')
+        print(f'{self.name} attacked {robot.name}, and it delt {str(self.attack_power)} damage!')
+        print(f'{robot.name} has {str(robot.health)} health left!')
