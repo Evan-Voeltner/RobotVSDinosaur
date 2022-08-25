@@ -20,3 +20,4 @@ class Robot:
         for weapon in self.weapons:
             if weapon.name.lower() == selected_weapon:
                 self.active_weapon = weapon
+

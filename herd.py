@@ -5,6 +5,14 @@ class Herd:
     def __init__(self):
         self.herd = [Dinosaur('Brayden'), Dinosaur('Kayden'), Dinosaur('Hayden')]
 
-    def get_robot(self):
+    def get_dinosaur(self):
         dinosaur_index = randint(0,2)
         return self.herd[dinosaur_index]
+
+    def kill_dinosaur(self, dinosaur_to_remove):
+        for index_of_dinosaur in range(len(self.herd)-1):
+            if self.herd[index_of_dinosaur] == dinosaur_to_remove:
+                    self.herd.pop(index_of_dinosaur)
+                    print(f'{dinosaur_to_remove.name} was killed!')
+
+    

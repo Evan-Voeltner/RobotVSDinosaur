@@ -8,3 +8,9 @@ class Fleet:
     def get_robot(self):
         robot_index = randint(0,2)
         return self.fleet[robot_index]
+
+    def kill_robot(self, robot_to_remove):
+        for index_of_robot in range(len(self.herd)-1):
+            if self.fleet[index_of_robot] == robot_to_remove:
+                    self.fleet.pop(index_of_robot)
+                    print(f'{robot_to_remove.name} was killed!')
